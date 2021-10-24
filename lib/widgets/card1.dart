@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/fooderlich_theme.dart';
+import 'package:fooderlich/models/models.dart';
 
 class Card1 extends StatelessWidget {
-  const Card1({Key? key}) : super(key: key);
-  // 1
-  final String category = 'Editor\'s Choice';
-  final String title = 'The Art of Dough';
-  final String description = 'Learn to make the perfect bread.';
-  final String chef = 'Ray Wenderlich';
+  final ExploreRecipe recipe;
+
+  const Card1({
+    Key? key,
+    required this.recipe,
+  }) : super(key: key);
 
   // 2
   @override
@@ -17,32 +18,28 @@ class Card1 extends StatelessWidget {
       child: Container(
         child: Stack(
           children: [
-            // 8
             Text(
-              category,
+              recipe.subtitle,
               style: FooderlichTheme.darkTextTheme.bodyText1,
             ),
-            // 9
             Positioned(
               child: Text(
-                title,
+                recipe.title,
                 style: FooderlichTheme.darkTextTheme.headline2,
               ),
               top: 20,
             ),
-            // 10
             Positioned(
               child: Text(
-                description,
+                recipe.message,
                 style: FooderlichTheme.darkTextTheme.bodyText1,
               ),
               bottom: 30,
               right: 0,
             ),
-            // 11
             Positioned(
               child: Text(
-                chef,
+                recipe.authorName,
                 style: FooderlichTheme.darkTextTheme.bodyText1,
               ),
               bottom: 10,
