@@ -5,11 +5,46 @@ import 'package:fooderlich/widgets/widgets.dart';
 import 'package:fooderlich/models/models.dart';
 import 'package:fooderlich/api/mock_fooderlich_service.dart';
 
-class ExploreScreen extends StatelessWidget {
-  // 1
-  final mockService = MockFooderlichService();
+class ExploreScreen extends StatefulWidget {
+  const ExploreScreen({Key? key}) : super(key: key);
 
-  ExploreScreen({Key? key}) : super(key: key);
+  @override
+  State<ExploreScreen> createState() => _ExploreScreenState();
+}
+
+class _ExploreScreenState extends State<ExploreScreen> {
+  /* variables */
+  final mockService = MockFooderlichService();
+  late ScrollController _controller;
+
+  /* methods */
+  void _scrollListener() {
+    // 1
+    if (_controller.offset >= _controller.position.maxScrollExtent &&
+        !_controller.position.outOfRange) {
+      print('i am at the bottom!');
+    }
+    // 2
+    if (_controller.offset <= _controller.position.minScrollExtent &&
+        !_controller.position.outOfRange) {
+      print('i am at the top!');
+    }
+  }
+
+  @override
+  void initState() {
+    // 1
+    _controller = ScrollController();
+    // 2
+    _controller.addListener(_scrollListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(_scrollListener);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +66,9 @@ class ExploreScreen extends StatelessWidget {
               // 8
               const SizedBox(height: 16),
               // 9
-              // TODO: Replace this with FriendPostListView
-              Container(
-                height: 400,
-                color: Colors.green,
-              ),
+              FriendPostListView(friendPosts: snapshot.data?.friendPosts ?? []),
             ],
+            controller: _controller,
           );
         } else {
           // 10
