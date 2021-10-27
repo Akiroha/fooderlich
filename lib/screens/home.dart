@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/pages/explore_screen.dart';
+import 'package:fooderlich/screens/explore_screen.dart';
 import './recipes_screen.dart';
 import './grocery_screen.dart';
 import 'package:provider/provider.dart';

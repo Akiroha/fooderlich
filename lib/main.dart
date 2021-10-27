@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'fooderlich_theme.dart';
-import './pages/home.dart';
+import './screens/home.dart';
 import 'package:provider/provider.dart';
 import 'models/models.dart';
 
@@ -24,7 +24,7 @@ class Fooderlich extends StatelessWidget {
         providers: [
           // 2
           ChangeNotifierProvider(create: (context) => TabManager()),
-          // TODO 10: Add GroceryManager Provider
+          ChangeNotifierProvider(create: (context) => GroceryManager()),
         ],
         child: const Home(),
       ),
