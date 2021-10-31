@@ -50,8 +50,7 @@ class GroceryScreen extends StatelessWidget {
       builder: (context, manager, child) {
         // 3
         if (manager.groceryItems.isNotEmpty) {
-          // TODO 25: Add GroceryListScreen
-          return Container();
+          return GroceryListScreen(manager: manager);
         } else {
           // 4
           return const EmptyGroceryScreen();

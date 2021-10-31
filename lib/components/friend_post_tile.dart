@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fooderlich/widgets/widgets.dart';
+import 'package:fooderlich/components/components.dart';
 import 'package:fooderlich/models/models.dart';
 
 class FriendPostTile extends StatelessWidget {
